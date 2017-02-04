@@ -6,6 +6,7 @@
     <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Microsoft.SDK.Groove.Authentication\Microsoft.SDK.Groove.Authentication.csproj" />
     <ProjectReference Include="..\Microsoft.SDK.Groove.Extensions\Microsoft.SDK.Groove.Extensions.csproj" />
     <ProjectReference Include="..\Microsoft.SDK.Groove.Models\Microsoft.SDK.Groove.Models.csproj" />
   </ItemGroup>
