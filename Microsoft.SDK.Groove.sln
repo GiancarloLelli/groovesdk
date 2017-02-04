@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.SDK.Groove.Models
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.SDK.Groove.Test", "test\Microsoft.SDK.Groove.Test\Microsoft.SDK.Groove.Test.csproj", "{5164CEF1-CB5D-4508-B458-AF9A610966B2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.SDK.Groove.Extensions", "src\Microsoft.SDK.Groove.Extensions\Microsoft.SDK.Groove.Extensions.csproj", "{D9E662FC-6EC5-4CEB-A3B9-DA1812B34EF1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.SDK.Groove.Authentication", "src\Microsoft.SDK.Groove.Authentication\Microsoft.SDK.Groove.Authentication.csproj", "{7135BBD5-B6AD-4384-AB52-7CBF2AA11FB0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +59,30 @@ Global
 		{5164CEF1-CB5D-4508-B458-AF9A610966B2}.Release|x64.Build.0 = Release|Any CPU
 		{5164CEF1-CB5D-4508-B458-AF9A610966B2}.Release|x86.ActiveCfg = Release|Any CPU
 		{5164CEF1-CB5D-4508-B458-AF9A610966B2}.Release|x86.Build.0 = Release|Any CPU
+		{D9E662FC-6EC5-4CEB-A3B9-DA1812B34EF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9E662FC-6EC5-4CEB-A3B9-DA1812B34EF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9E662FC-6EC5-4CEB-A3B9-DA1812B34EF1}.Debug|x64.ActiveCfg = Debug|x64
+		{D9E662FC-6EC5-4CEB-A3B9-DA1812B34EF1}.Debug|x64.Build.0 = Debug|x64
+		{D9E662FC-6EC5-4CEB-A3B9-DA1812B34EF1}.Debug|x86.ActiveCfg = Debug|x86
+		{D9E662FC-6EC5-4CEB-A3B9-DA1812B34EF1}.Debug|x86.Build.0 = Debug|x86
+		{D9E662FC-6EC5-4CEB-A3B9-DA1812B34EF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9E662FC-6EC5-4CEB-A3B9-DA1812B34EF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9E662FC-6EC5-4CEB-A3B9-DA1812B34EF1}.Release|x64.ActiveCfg = Release|x64
+		{D9E662FC-6EC5-4CEB-A3B9-DA1812B34EF1}.Release|x64.Build.0 = Release|x64
+		{D9E662FC-6EC5-4CEB-A3B9-DA1812B34EF1}.Release|x86.ActiveCfg = Release|x86
+		{D9E662FC-6EC5-4CEB-A3B9-DA1812B34EF1}.Release|x86.Build.0 = Release|x86
+		{7135BBD5-B6AD-4384-AB52-7CBF2AA11FB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7135BBD5-B6AD-4384-AB52-7CBF2AA11FB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7135BBD5-B6AD-4384-AB52-7CBF2AA11FB0}.Debug|x64.ActiveCfg = Debug|x64
+		{7135BBD5-B6AD-4384-AB52-7CBF2AA11FB0}.Debug|x64.Build.0 = Debug|x64
+		{7135BBD5-B6AD-4384-AB52-7CBF2AA11FB0}.Debug|x86.ActiveCfg = Debug|x86
+		{7135BBD5-B6AD-4384-AB52-7CBF2AA11FB0}.Debug|x86.Build.0 = Debug|x86
+		{7135BBD5-B6AD-4384-AB52-7CBF2AA11FB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7135BBD5-B6AD-4384-AB52-7CBF2AA11FB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7135BBD5-B6AD-4384-AB52-7CBF2AA11FB0}.Release|x64.ActiveCfg = Release|x64
+		{7135BBD5-B6AD-4384-AB52-7CBF2AA11FB0}.Release|x64.Build.0 = Release|x64
+		{7135BBD5-B6AD-4384-AB52-7CBF2AA11FB0}.Release|x86.ActiveCfg = Release|x86
+		{7135BBD5-B6AD-4384-AB52-7CBF2AA11FB0}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
