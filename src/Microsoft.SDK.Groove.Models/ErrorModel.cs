@@ -9,7 +9,5 @@ namespace Microsoft.SDK.Groove.Models
         public string ErrorCode { get; set; }
 
         public string Description { get; set; }
-
-        public string Message { get; set; }
     }
 }

@@ -7,13 +7,13 @@ namespace Microsoft.SDK.Groove.Models.Responses
 {
     public class AlbumsResponse : BaseModel
     {
-        public string ReleaseDate { get; set; }
+        public DateTime ReleaseDate { get; set; }
 
-        public string Duration { get; set; }
+        public TimeSpan Duration { get; set; }
 
-        public string TrackCount { get; set; }
+        public int TrackCount { get; set; }
 
-        public string IsExplicit { get; set; }
+        public bool IsExplicit { get; set; }
 
         public string LabelName { get; set; }
 

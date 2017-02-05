@@ -14,9 +14,6 @@ namespace Microsoft.SDK.Groove.Models.Authentication
         [JsonProperty(PropertyName = "expires_in")]
         public string ExpiresIn { get; set; }
 
-        [JsonProperty(PropertyName = "scope")]
-        public string Scope { get; set; }
-
         [JsonProperty(PropertyName = "access_token")]
         public string AccessToken { get; set; }
 

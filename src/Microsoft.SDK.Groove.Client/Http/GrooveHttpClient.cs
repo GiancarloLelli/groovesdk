@@ -35,7 +35,6 @@ namespace Microsoft.SDK.Groove.Client.Http
         public async Task<T> QueryServiceAsync<T>(string request)
         {
             await ValidateTokenAsync();
-            request = string.Concat(request, $"&accessToken=Bearer+{AccessToken.AccessToken}");
             var response = await m_client.GetAsync(request);
             string json = await response.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<T>(json);
@@ -50,6 +49,7 @@ namespace Microsoft.SDK.Groove.Client.Http
                 AuthTokenModel tokenResponse = JsonConvert.DeserializeObject<AuthTokenModel>(responseString);
                 AccessToken = tokenResponse;
                 AccessToken.TokenExpiryDate = Convert.ToDouble(tokenResponse.ExpiresIn).UnixTimeStampToDateTime();
+                m_client.DefaultRequestHeaders.TryAddWithoutValidation("Authorization", $"Bearer {AccessToken.AccessToken}");
             }
         }
 

@@ -17,9 +17,17 @@ namespace Microsoft.SDK.Groove.Models.Responses
 
         public string Source { get; set; }
 
-        public IList<string> Genres { get; set; }
+        public string CompatibleSources { get; set; }
+
+        public IEnumerable<string> Genres { get; set; }
 
         public IEnumerable<string> Subgenres { get; set; }
+
+        public string Biography { get; set; }
+
+        public AlbumLookupResponse Albums { get; set; }
+
+        public TrackLookupResponse TopTracks { get; set; }
 
         public Uri GetDeepLink()
         {

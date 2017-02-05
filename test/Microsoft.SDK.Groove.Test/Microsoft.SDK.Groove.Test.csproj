@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Microsoft.SDK.Groove.Authentication\Microsoft.SDK.Groove.Authentication.csproj" />
+    <ProjectReference Include="..\..\src\Microsoft.SDK.Groove.Client\Microsoft.SDK.Groove.Client.csproj" />
+    <ProjectReference Include="..\..\src\Microsoft.SDK.Groove.Extensions\Microsoft.SDK.Groove.Extensions.csproj" />
+    <ProjectReference Include="..\..\src\Microsoft.SDK.Groove.Models\Microsoft.SDK.Groove.Models.csproj" />
+  </ItemGroup>
+</Project>

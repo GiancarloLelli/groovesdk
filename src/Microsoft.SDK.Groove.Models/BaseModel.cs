@@ -17,12 +17,12 @@ namespace Microsoft.SDK.Groove.Models
 
         public string Source { get; set; }
 
+        public string CompatibleSources { get; set; }
+
         public IEnumerable<string> Genres { get; set; }
 
         public IEnumerable<string> Subgenres { get; set; }
 
         public IEnumerable<ArtistDescriptionModel> Artists { get; set; }
-
-        public ErrorModel Error { get; set; }
     }
 }
