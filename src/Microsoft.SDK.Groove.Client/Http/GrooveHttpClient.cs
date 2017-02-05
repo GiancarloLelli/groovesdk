@@ -25,7 +25,7 @@ namespace Microsoft.SDK.Groove.Client.Http
             {
                 { "client_id", clientId },
                 { "client_secret", clientSecret },
-                { "scope", "http://music.xboxlive.com" },
+                { "scope", "app.music.xboxlive.com" },
                 { "grant_type", "client_credentials" }
             };
 
@@ -43,7 +43,7 @@ namespace Microsoft.SDK.Groove.Client.Http
 
         private async Task AuthenticateAsync()
         {
-            var response = await m_client.PostAsync(new Uri("https://datamarket.accesscontrol.windows.net/v2/OAuth2-13"), new FormUrlEncodedContent(m_requestData));
+            var response = await m_client.PostAsync(new Uri("https://login.live.com/accesstoken.srf"), new FormUrlEncodedContent(m_requestData));
             if (response.IsSuccessStatusCode)
             {
                 String responseString = await response.Content.ReadAsStringAsync();
