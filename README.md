@@ -1,12 +1,12 @@
 # Groove Music Service .NET Standard SDK
 This repo contains a .NETStandard wrapper for the Groove Music Service REST API.
-This project is a porting of the same library I made available on NuGet some time ago (I've unpublished it)
+This project is a porting of the same library I made available on NuGet some time ago (I've unpublished it).
 I decided to revive this side project since the service changed its name and a few other changes were made on the backed.
 I really like the service and I think that many app can benefit from using it.
 
 ## Getting started
 First thing you have to do is to register yor app and get a `clientID` and `clientSecret` code.
-You can do that by following this step by step [how to](https://docs.microsoft.com/en-us/groove/getting-started)
+You can do that by following this step by step [how to](https://docs.microsoft.com/en-us/groove/getting-started).
 The SDK is able to handle **authentication and automatic token refresh** so basically you can forget about that.
 As the name of this project says, this library is a **.NET Standard 1.4** library. 
 The reason for that is because I wanted to make UWP apps able to use it.
