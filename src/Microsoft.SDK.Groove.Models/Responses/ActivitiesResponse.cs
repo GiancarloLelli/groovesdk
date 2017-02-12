@@ -4,13 +4,11 @@ using System.Text;
 
 namespace Microsoft.SDK.Groove.Models.Responses
 {
-    public class TrackPlaybackResponse
+    public class ActivitiesResponse
     {
-        public string ContentType { get; set; }
+        public string Culture { get; set; }
 
-        public DateTime ExpiresOn { get; set; }
-
-        public Uri Url { get; set; }
+        public IEnumerable<CatalogItem> CatalogActivities { get; set; }
 
         public ErrorModel Error { get; set; }
     }

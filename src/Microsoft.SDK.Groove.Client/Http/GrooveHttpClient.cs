@@ -11,15 +11,23 @@ namespace Microsoft.SDK.Groove.Client.Http
 {
     public class GrooveHttpClient : IDisposable
     {
-        private readonly HttpClient m_client;
+        private readonly HttpClient m_musicHttp;
+        private readonly HttpClient m_catalogHttp;
         private readonly Dictionary<string, string> m_requestData;
 
         public AuthTokenModel AccessToken { get; private set; }
 
+        public Guid ClienteInstanceId { get; private set; }
+
         public GrooveHttpClient(string clientId, string clientSecret)
         {
-            m_client = new HttpClient();
-            m_client.BaseAddress = new Uri("https://music.xboxlive.com/1/content/music/");
+            ClienteInstanceId = Guid.NewGuid();
+
+            m_musicHttp = new HttpClient();
+            m_musicHttp.BaseAddress = new Uri("https://music.xboxlive.com/1/content/music/");
+
+            m_catalogHttp = new HttpClient();
+            m_catalogHttp.BaseAddress = new Uri("https://music.xboxlive.com/1/content/");
 
             m_requestData = new Dictionary<string, string>()
             {
@@ -32,24 +40,33 @@ namespace Microsoft.SDK.Groove.Client.Http
             Task.Run(async () => await AuthenticateAsync()).Wait();
         }
 
-        public async Task<T> QueryServiceAsync<T>(string request)
+        public async Task<T> QueryMusicServiceAsync<T>(string request)
         {
             await ValidateTokenAsync();
-            var response = await m_client.GetAsync(request);
+            var response = await m_musicHttp.GetAsync(request);
+            string json = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<T>(json);
+        }
+
+        public async Task<T> QueryCatalogServiceAsync<T>(string request)
+        {
+            await ValidateTokenAsync();
+            var response = await m_catalogHttp.GetAsync(request);
             string json = await response.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<T>(json);
         }
 
         private async Task AuthenticateAsync()
         {
-            var response = await m_client.PostAsync(new Uri("https://login.live.com/accesstoken.srf"), new FormUrlEncodedContent(m_requestData));
+            var response = await m_musicHttp.PostAsync(new Uri("https://login.live.com/accesstoken.srf"), new FormUrlEncodedContent(m_requestData));
             if (response.IsSuccessStatusCode)
             {
                 String responseString = await response.Content.ReadAsStringAsync();
                 AuthTokenModel tokenResponse = JsonConvert.DeserializeObject<AuthTokenModel>(responseString);
                 AccessToken = tokenResponse;
                 AccessToken.TokenExpiryDate = Convert.ToDouble(tokenResponse.ExpiresIn).UnixTimeStampToDateTime();
-                m_client.DefaultRequestHeaders.TryAddWithoutValidation("Authorization", $"Bearer {AccessToken.AccessToken}");
+                m_musicHttp.DefaultRequestHeaders.TryAddWithoutValidation("Authorization", $"Bearer {AccessToken.AccessToken}");
+                m_catalogHttp.DefaultRequestHeaders.TryAddWithoutValidation("Authorization", $"Bearer {AccessToken.AccessToken}");
             }
         }
 
@@ -59,6 +76,6 @@ namespace Microsoft.SDK.Groove.Client.Http
                 await AuthenticateAsync();
         }
 
-        public void Dispose() => m_client?.Dispose();
+        public void Dispose() => m_musicHttp?.Dispose();
     }
 }

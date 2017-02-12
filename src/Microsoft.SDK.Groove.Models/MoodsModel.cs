@@ -4,12 +4,14 @@ using System.Text;
 
 namespace Microsoft.SDK.Groove.Models
 {
-    public class ErrorModel
+    public class CatalogItem
     {
-        public string ErrorCode { get; set; }
+        public string Id { get; set; }
+
+        public string Name { get; set; }
 
         public string Description { get; set; }
 
-        public string Message { get; set; }
+        public Uri ImageUrl { get; set; }
     }
 }

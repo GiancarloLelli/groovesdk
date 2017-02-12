@@ -21,7 +21,8 @@ namespace Microsoft.SDK.Groove.Models.Parameters
     {
         Albums = 0,
         Tracks = 1,
-        Artists = 2
+        Artists = 2,
+        Playlists = 3
     }
     public enum PictureResizeMode
     {
@@ -32,9 +33,10 @@ namespace Microsoft.SDK.Groove.Models.Parameters
 
     public enum PlaybackType
     {
-        Full = 0,
-        ThirtySecPreview = 1
+        Stream = 0,
+        Preview = 1
     }
+
     public enum CatalogSortingType
     {
         ReleaseDate = 0,
@@ -72,6 +74,7 @@ namespace Microsoft.SDK.Groove.Models.Parameters
 
     public enum SearchSource
     {
-        Catalog = 0
+        Catalog = 0,
+        Collection = 1
     }
 }
