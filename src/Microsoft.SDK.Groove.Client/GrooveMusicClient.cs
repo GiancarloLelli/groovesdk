@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Microsoft.SDK.Groove.Client
 {
-    public sealed class GrooveMusicClient
+    public sealed class GrooveMusicClient : IDisposable
     {
         private readonly string m_clientId;
         private readonly string m_secret;
@@ -165,5 +165,7 @@ namespace Microsoft.SDK.Groove.Client
             var response = await m_client.Value.QueryCatalogServiceAsync<TrackPlaybackResponse>(url);
             return response;
         }
+
+        public void Dispose() => m_client?.Value?.Dispose();
     }
 }

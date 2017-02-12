@@ -76,6 +76,10 @@ namespace Microsoft.SDK.Groove.Client.Http
                 await AuthenticateAsync();
         }
 
-        public void Dispose() => m_musicHttp?.Dispose();
+        public void Dispose()
+        {
+            m_musicHttp?.Dispose();
+            m_catalogHttp?.Dispose();
+        }
     }
 }
