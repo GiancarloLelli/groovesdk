@@ -1,5 +1,5 @@
 # Groove Music Service .NET Standard SDK
-This repo contains a .NETStandard wrapper for the Groove Music Service REST API.
+This repo contains a .NET Standard wrapper for the Groove Music Service REST API.
 This project is a porting of the same library I made available on NuGet some time ago (I've unpublished it).
 I decided to revive this side project since the service changed its name and a few other changes were made on the backed.
 I really like the service and I think that many app can benefit from using it.
@@ -42,7 +42,7 @@ Here's a list of API endpoint that do are not accessible with this SDK:
 * [Add tracks to collection](https://docs.microsoft.com/en-us/groove/groove-service-rest-reference/uri-add-track-collection)
 
 ## Sample usage
-Inside the .cs file "_\groovesdk\test\Microsoft.SDK.Groove.Test\Program.cs_" you can find some examples of usage.
+Inside the .cs file "_\groovesdk\test\GL.Sdk.Groove.Test\Program.cs_" you can find some examples of usage.
 For those who are too lazy to browse to that file, here's a snippet of that file.
 
 ```csharp
