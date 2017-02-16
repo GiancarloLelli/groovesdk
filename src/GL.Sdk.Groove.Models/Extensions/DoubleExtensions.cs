@@ -4,7 +4,7 @@ using System.Text;
 
 namespace GL.Sdk.Groove.Models.Extensions
 {
-    internal static class DoubleExtensions
+    public static class DoubleExtensions
     {
         public static DateTime UnixTimeStampToDateTime(this double unixTimeStamp)
         {
