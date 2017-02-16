@@ -32,8 +32,8 @@ class Program
         var new_releases_all = await m_client.GetNewReleasesAsync();
         var new_releases = await m_client.GetNewReleasesAsync(genre: new GenreModel("Rock"));
 
-        var preview_stream = await m_client.GetPreviewStreamAsync(songId: bastille_pompei, streamType: PlaybackType.Preview);
-        var full_stream = await m_client.GetPreviewStreamAsync(songId: bastille_pompei, streamType: PlaybackType.Stream);
+        var preview_stream = await m_client.GetPreviewStreamAsync(track: bastille_pompei, streamType: PlaybackType.Preview);
+        var full_stream = await m_client.GetPreviewStreamAsync(track: bastille_pompei, streamType: PlaybackType.Stream);
 
         var moods = await m_client.GetAvailableMoodsAsync();
         var activities = await m_client.GetAvailableActivitiesAsync();

@@ -12,6 +12,9 @@ using System.Threading.Tasks;
 
 namespace GL.Sdk.Groove.Client
 {
+    /// <summary>
+    /// This class contains all the logic that wraps the REST API of the Groove Music Service
+    /// </summary>
     public sealed class GrooveMusicClient : IDisposable
     {
         private readonly string m_clientId;
@@ -19,6 +22,11 @@ namespace GL.Sdk.Groove.Client
         private readonly RegionInfo m_culture;
         private readonly Lazy<GrooveHttpClient> m_client;
 
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        /// <param name="clientId">Client ID of your app obtained through the DevCenter</param>
+        /// <param name="clientSecret">Client Secret of your app obtained through the DevCenter</param>
         public GrooveMusicClient(string clientId, string clientSecret)
         {
             m_clientId = clientId;
@@ -27,6 +35,12 @@ namespace GL.Sdk.Groove.Client
             m_client = new Lazy<GrooveHttpClient>(() => new GrooveHttpClient(m_clientId, m_secret));
         }
 
+        /// <summary>
+        /// This constructor let's you override the locale settings
+        /// </summary>
+        /// <param name="clientId">Client ID of your app obtained through the DevCenter</param>
+        /// <param name="clientSecret">Client Secret of your app obtained through the DevCenter</param>
+        /// <param name="locale">Localization of your app</param>
         public GrooveMusicClient(string clientId, string clientSecret, RegionInfo locale)
         {
             m_culture = locale;
@@ -35,6 +49,12 @@ namespace GL.Sdk.Groove.Client
             m_client = new Lazy<GrooveHttpClient>(() => new GrooveHttpClient(m_clientId, m_secret));
         }
 
+
+        /// <summary>
+        /// Main method to search through the Music Catalog
+        /// </summary>
+        /// <param name="keyword">What to search</param>
+        /// <returns>The list of items found in the catalog</returns>
         public async Task<GrooveResponse> SearchAsync(string keyword)
         {
             var url = $"search?q={Uri.EscapeDataString(keyword)}&country={m_culture.Name}&language={m_culture.Name}";
@@ -42,6 +62,12 @@ namespace GL.Sdk.Groove.Client
             return response;
         }
 
+        /// <summary>
+        /// Main method to search through the Music Catalog
+        /// </summary>
+        /// <param name="keyword">What to search</param>
+        /// <param name="maxResults">Maximum number of results</param>
+        /// <returns>The list of items found in the catalog</returns>
         public async Task<GrooveResponse> SearchAsync(string keyword, int maxResults)
         {
             if (maxResults > 25 || maxResults <= 0) throw new ArgumentException("maxResults must be greater than 0 and less than 25", "maxResults");
@@ -50,6 +76,13 @@ namespace GL.Sdk.Groove.Client
             return response;
         }
 
+        /// <summary>
+        /// Main method to search through the Music Catalog
+        /// </summary>
+        /// <param name="keyword">What to search</param>
+        /// <param name="maxResults">Maximum number of results</param>
+        /// <param name="filters">Specifies what to search in the catalog</param>
+        /// <returns>The list of items found in the catalog</returns>
         public async Task<GrooveResponse> SearchAsync(string keyword, int maxResults, IEnumerable<FilterType> filters)
         {
             if (maxResults > 25) throw new ArgumentException("maxResults must be greater than 0 and less than 25", "maxResults");
@@ -59,6 +92,14 @@ namespace GL.Sdk.Groove.Client
             return response;
         }
 
+        /// <summary>
+        /// Main method to search through the Music Catalog
+        /// </summary>
+        /// <param name="keyword">What to search</param>
+        /// <param name="maxResults">Maximum number of results</param>
+        /// <param name="filters">Specifies what to search in the catalog</param>
+        /// <param name="source">Specifies where to search in the catalog</param>
+        /// <returns>The list of items found in the catalog</returns>
         public async Task<GrooveResponse> SearchAsync(string keyword, int maxResults, IEnumerable<FilterType> filters, IEnumerable<SearchSource> source)
         {
             if (maxResults > 25) throw new ArgumentException("maxResults must be greater than 0 and less than 25", "maxResults");
@@ -69,6 +110,11 @@ namespace GL.Sdk.Groove.Client
             return response;
         }
 
+        /// <summary>
+        /// Main method to continue a paginated search in the catalog
+        /// </summary>
+        /// <param name="continuationToken">The token to continue a previously started search</param>
+        /// <returns>The list of items found in the catalog</returns>
         public async Task<GrooveResponse> ContinueSearchAsync(string continuationToken)
         {
             var url = $"search?continuationToken={continuationToken}";
@@ -76,6 +122,11 @@ namespace GL.Sdk.Groove.Client
             return response;
         }
 
+        /// <summary>
+        /// Lookup a specific set of objects in the catalog
+        /// </summary>
+        /// <param name="ids">List of object ids</param>
+        /// <returns>The list of items found in the catalog</returns>
         public async Task<GrooveResponse> LookupAsync(IEnumerable<string> ids)
         {
             var formattedParams = ParametersFormatter.Format(ids);
@@ -84,6 +135,12 @@ namespace GL.Sdk.Groove.Client
             return response;
         }
 
+        /// <summary>
+        /// Lookup a specific set of objects in the catalog
+        /// </summary>
+        /// <param name="ids">List of object ids</param>
+        /// <param name="source">Where to search in the catalog</param>
+        /// <returns>The list of items found in the catalog</returns>
         public async Task<GrooveResponse> LookupAsync(IEnumerable<string> ids, IEnumerable<SearchSource> source)
         {
             var formattedParams = ParametersFormatter.Format(ids);
@@ -93,6 +150,13 @@ namespace GL.Sdk.Groove.Client
             return response;
         }
 
+        /// <summary>
+        /// Lookup a specific set of objects in the catalog
+        /// </summary>
+        /// <param name="ids">List of object ids</param>
+        /// <param name="source">Where to search in the catalog</param>
+        /// <param name="extraFields">Extra object to include in the results</param>
+        /// <returns>The list of items found in the catalog</returns>
         public async Task<GrooveResponse> LookupAsync(IEnumerable<string> ids, IEnumerable<SearchSource> source, IEnumerable<ExtrasParameters> extraFields)
         {
             var formattedParams = ParametersFormatter.Format(ids);
@@ -103,6 +167,12 @@ namespace GL.Sdk.Groove.Client
             return response;
         }
 
+        /// <summary>
+        /// Main method to continue a paginated search in the catalog
+        /// </summary>
+        /// <param name="ids">List of object ids</param>
+        /// <param name="continuationToken">The token to continue a previously started lookup</param>
+        /// <returns>The list of items found in the catalog</returns>
         public async Task<GrooveResponse> ContinueLookupAsync(string continuationToken, IEnumerable<string> ids)
         {
             var formattedParams = ParametersFormatter.Format(ids);
@@ -111,6 +181,10 @@ namespace GL.Sdk.Groove.Client
             return response;
         }
 
+        /// <summary>
+        /// Fetches the available music genres for the current locale
+        /// </summary>
+        /// <returns>The list of available genres</returns>
         public async Task<GenresResponse> GetGenresAsync()
         {
             string url = $"catalog/genres?country={m_culture.Name}&language={m_culture.Name}";
@@ -118,6 +192,10 @@ namespace GL.Sdk.Groove.Client
             return response;
         }
 
+        /// <summary>
+        /// Fetches what's currently under the Groove Spotlight
+        /// </summary>
+        /// <returns>The list of featured albums</returns>
         public async Task<FeaturedResponse> GetSpotlightAsync()
         {
             string url = $"spotlight?country={m_culture.Name}&language={m_culture.Name}";
@@ -125,12 +203,20 @@ namespace GL.Sdk.Groove.Client
             return response;
         }
 
+        /// <summary>
+        /// Fetches the user's profile
+        /// </summary>
+        /// <returns>The user profile</returns>
         public async Task<UserProfileResponse> GetUserProfileAsync()
         {
             var response = await m_client.Value.QueryMusicServiceAsync<UserProfileResponse>("/1/user/music/profile");
             return response;
         }
 
+        /// <summary>
+        /// Fetches the new releases for the current locale
+        /// </summary>
+        /// <returns>The list of new releases</returns>
         public async Task<FeaturedResponse> GetNewReleasesAsync()
         {
             var url = $"newreleases?country={m_culture.Name}&language={m_culture.Name}";
@@ -138,6 +224,11 @@ namespace GL.Sdk.Groove.Client
             return response;
         }
 
+        /// <summary>
+        /// Fetches the new releases for the current locale
+        /// </summary>
+        /// <param name="genre">Narrows down the new releases to a specific music genre</param>
+        /// <returns>The list of new releases</returns>
         public async Task<FeaturedResponse> GetNewReleasesAsync(GenreModel genre)
         {
             var url = $"newreleases?genre={genre.Name}&country={m_culture.Name}&language={m_culture.Name}";
@@ -145,6 +236,10 @@ namespace GL.Sdk.Groove.Client
             return response;
         }
 
+        /// <summary>
+        /// Fetches the moods from the Groove Music Service
+        /// </summary>
+        /// <returns>The list of available moods</returns>
         public async Task<MoodsResponse> GetAvailableMoodsAsync()
         {
             var url = $"catalog/moods?&country={m_culture.Name}&language={m_culture.Name}";
@@ -152,6 +247,10 @@ namespace GL.Sdk.Groove.Client
             return response;
         }
 
+        /// <summary>
+        /// Fetches the list of available activities from the Groove Music Service
+        /// </summary>
+        /// <returns></returns>
         public async Task<ActivitiesResponse> GetAvailableActivitiesAsync()
         {
             var url = $"catalog/activities?&country={m_culture.Name}&language={m_culture.Name}";
@@ -159,13 +258,22 @@ namespace GL.Sdk.Groove.Client
             return response;
         }
 
-        public async Task<TrackPlaybackResponse> GetPreviewStreamAsync(string songId, PlaybackType streamType)
+        /// <summary>
+        /// Gets the preview / full stream of a track
+        /// </summary>
+        /// <param name="track">Track id</param>
+        /// <param name="streamType">Stream type: Full or Preview</param>
+        /// <returns></returns>
+        public async Task<TrackPlaybackResponse> GetPreviewStreamAsync(string track, PlaybackType streamType)
         {
-            var url = $"{songId}/{streamType}?country={m_culture.Name}&language={m_culture.Name}&clientInstanceId={m_client.Value.ClienteInstanceId}";
+            var url = $"{track}/{streamType}?country={m_culture.Name}&language={m_culture.Name}&clientInstanceId={m_client.Value.ClienteInstanceId}";
             var response = await m_client.Value.QueryCatalogServiceAsync<TrackPlaybackResponse>(url);
             return response;
         }
 
+        /// <summary>
+        /// Disposes the object to free up some memory
+        /// </summary>
         public void Dispose() => m_client?.Value?.Dispose();
     }
 }
