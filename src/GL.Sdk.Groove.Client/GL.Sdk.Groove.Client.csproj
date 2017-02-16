@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard1.4</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GL.Sdk.Groove.Authentication\GL.Sdk.Groove.Authentication.csproj" />
+    <ProjectReference Include="..\GL.Sdk.Groove.Extensions\GL.Sdk.Groove.Extensions.csproj" />
+    <ProjectReference Include="..\GL.Sdk.Groove.Models\GL.Sdk.Groove.Models.csproj" />
+  </ItemGroup>
+</Project>
