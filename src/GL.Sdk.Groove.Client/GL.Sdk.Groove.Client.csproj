@@ -5,11 +5,14 @@
     <PackageId>GL.Sdk.Groove</PackageId>
     <PackageVersion>1.0.0</PackageVersion>
     <Authors>Giancarlo Lelli</Authors>
-    <Description>A modern and intuitive SDK for the Groove Music Service REST API</Description>
+    <Description>A modern and intuitive SDK for the Groove Music Service REST API. The name Groove is a registered trademark. No claim is made to the exclusive right to use the word "Groove" apart from the mark as shown.</Description>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageReleaseNotes>First release</PackageReleaseNotes>
     <Copyright>Copyright 2016 (c) Giancarlo Lelli. All rights reserved.</Copyright>
     <PackageTags>groove-music</PackageTags>
+    <Name>Groove Music Service SDK</Name>
+    <PackageLicenseUrl>https://github.com/GiancarloLelli/groovesdk/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/GiancarloLelli/groovesdk</PackageProjectUrl>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
