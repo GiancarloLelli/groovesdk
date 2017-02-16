@@ -5,7 +5,7 @@ using System.Text;
 
 namespace GL.Sdk.Groove.Client.Formatters
 {
-    public class ParametersFormatter
+    internal class ParametersFormatter
     {
         public static string Format(IEnumerable<string> _array)
         {

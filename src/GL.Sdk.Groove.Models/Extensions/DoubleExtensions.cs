@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace GL.Sdk.Groove.Extensions
+namespace GL.Sdk.Groove.Models.Extensions
 {
     public static class DoubleExtensions
     {

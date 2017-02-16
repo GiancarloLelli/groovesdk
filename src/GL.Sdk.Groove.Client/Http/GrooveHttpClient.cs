@@ -1,4 +1,4 @@
-﻿using GL.Sdk.Groove.Extensions;
+﻿using GL.Sdk.Groove.Models.Extensions;
 using GL.Sdk.Groove.Models.Authentication;
 using Newtonsoft.Json;
 using System;
@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace GL.Sdk.Groove.Client.Http
 {
-    public class GrooveHttpClient : IDisposable
+    internal class GrooveHttpClient : IDisposable
     {
         private readonly HttpClient m_musicHttp;
         private readonly HttpClient m_catalogHttp;
@@ -23,11 +23,8 @@ namespace GL.Sdk.Groove.Client.Http
         {
             ClienteInstanceId = Guid.NewGuid();
 
-            m_musicHttp = new HttpClient();
-            m_musicHttp.BaseAddress = new Uri("https://music.xboxlive.com/1/content/music/");
-
-            m_catalogHttp = new HttpClient();
-            m_catalogHttp.BaseAddress = new Uri("https://music.xboxlive.com/1/content/");
+            m_musicHttp = new HttpClient() { BaseAddress = new Uri("https://music.xboxlive.com/1/content/music/") };
+            m_catalogHttp = new HttpClient() { BaseAddress = new Uri("https://music.xboxlive.com/1/content/") };
 
             m_requestData = new Dictionary<string, string>()
             {

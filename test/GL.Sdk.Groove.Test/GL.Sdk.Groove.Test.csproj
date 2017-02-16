@@ -4,9 +4,7 @@
     <TargetFramework>netcoreapp1.1</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\GL.Sdk.Groove.Authentication\GL.Sdk.Groove.Authentication.csproj" />
     <ProjectReference Include="..\..\src\GL.Sdk.Groove.Client\GL.Sdk.Groove.Client.csproj" />
-    <ProjectReference Include="..\..\src\GL.Sdk.Groove.Extensions\GL.Sdk.Groove.Extensions.csproj" />
     <ProjectReference Include="..\..\src\GL.Sdk.Groove.Models\GL.Sdk.Groove.Models.csproj" />
   </ItemGroup>
 </Project>

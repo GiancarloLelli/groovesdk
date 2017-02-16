@@ -1,13 +1,20 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard1.4</TargetFramework>
+    <DocumentationFile>\GL.Sdk.Groove.Client.xml</DocumentationFile>
+    <PackageId>GL.Sdk.Groove</PackageId>
+    <PackageVersion>1.0.0</PackageVersion>
+    <Authors>Giancarlo Lelli</Authors>
+    <Description>A modern and intuitive SDK for the Groove Music Service REST API</Description>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageReleaseNotes>First release</PackageReleaseNotes>
+    <Copyright>Copyright 2016 (c) Giancarlo Lelli. All rights reserved.</Copyright>
+    <PackageTags>groove-music</PackageTags>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GL.Sdk.Groove.Authentication\GL.Sdk.Groove.Authentication.csproj" />
-    <ProjectReference Include="..\GL.Sdk.Groove.Extensions\GL.Sdk.Groove.Extensions.csproj" />
     <ProjectReference Include="..\GL.Sdk.Groove.Models\GL.Sdk.Groove.Models.csproj" />
   </ItemGroup>
 </Project>
