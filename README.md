@@ -14,7 +14,7 @@ If you are **not** building an UWP app and you still wanna use this SDK take a l
 
 ## Backlog
 Here's a list of stuff that still needs to be done from a _release_ point of view
-* Publish a NuGet Package
+* ~~Publish a NuGet Package~~ - [NuGet Package](https://www.nuget.org/packages/GL.Sdk.Groove/)
 * Set up the list of Up-For-Grabs
 
 ## Features available
