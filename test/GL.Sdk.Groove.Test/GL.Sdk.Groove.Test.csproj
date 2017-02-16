@@ -4,7 +4,6 @@
     <TargetFramework>netcoreapp1.1</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\GL.Sdk.Groove.Client\GL.Sdk.Groove.Client.csproj" />
-    <ProjectReference Include="..\..\src\GL.Sdk.Groove.Models\GL.Sdk.Groove.Models.csproj" />
+    <PackageReference Include="GL.Sdk.Groove" Version="1.0.0" />
   </ItemGroup>
 </Project>
