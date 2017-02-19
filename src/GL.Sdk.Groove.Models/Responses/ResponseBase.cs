@@ -4,8 +4,10 @@ using System.Text;
 
 namespace GL.Sdk.Groove.Models.Responses
 {
-    public class MoodsResponse : ResponseBase
+    public class ResponseBase
     {
-        public IEnumerable<CatalogItem> CatalogMoods { get; set; }
+        public string Culture { get; set; }
+
+        public ErrorModel Error { get; set; }
     }
 }

@@ -4,12 +4,8 @@ using System.Text;
 
 namespace GL.Sdk.Groove.Models.Responses
 {
-    public class ActivitiesResponse
+    public class ActivitiesResponse : ResponseBase
     {
-        public string Culture { get; set; }
-
         public IEnumerable<CatalogItem> CatalogActivities { get; set; }
-
-        public ErrorModel Error { get; set; }
     }
 }

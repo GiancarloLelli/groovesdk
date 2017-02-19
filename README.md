@@ -48,7 +48,7 @@ For those who are too lazy to browse to that file, here's a snippet of that file
 ```csharp
 class Program
 {
-    static void Main(string[] args) => Task.Run(async () => await MainAsync(args)).Wait();
+    static void Main(string[] args) => MainAsync(args).GetAwaiter().GetResult();
 
     static async Task MainAsync(string[] args)
     {

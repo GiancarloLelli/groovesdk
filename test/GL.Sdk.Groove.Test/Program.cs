@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 class Program
 {
-    static void Main(string[] args) => Task.Run(async () => await MainAsync(args)).Wait();
+    static void Main(string[] args) => MainAsync(args).GetAwaiter().GetResult();
 
     static async Task MainAsync(string[] args)
     {

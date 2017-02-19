@@ -4,10 +4,8 @@ using System.Text;
 
 namespace GL.Sdk.Groove.Models.Responses
 {
-    public class FeaturedResponse
+    public class FeaturedResponse : ResponseBase
     {
         public FeaturedItemCollectionModel Results { get; set; }
-
-        public ErrorModel Error { get; set; }
     }
 }

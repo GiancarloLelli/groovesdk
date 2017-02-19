@@ -57,9 +57,8 @@ namespace GL.Sdk.Groove.Client
         /// <returns>The list of items found in the catalog</returns>
         public async Task<GrooveResponse> SearchAsync(string keyword)
         {
-            var url = $"search?q={Uri.EscapeDataString(keyword)}&country={m_culture.Name}&language={m_culture.Name}";
-            var response = await m_client.Value.QueryMusicServiceAsync<GrooveResponse>(url);
-            return response;
+            var url = $"1/content/music/search?q={Uri.EscapeDataString(keyword)}&country={m_culture.Name}&language={m_culture.Name}";
+            return await m_client.Value.QueryMusicServiceAsync<GrooveResponse>(url);
         }
 
         /// <summary>
@@ -71,9 +70,8 @@ namespace GL.Sdk.Groove.Client
         public async Task<GrooveResponse> SearchAsync(string keyword, int maxResults)
         {
             if (maxResults > 25 || maxResults <= 0) throw new ArgumentException("maxResults must be greater than 0 and less than 25", "maxResults");
-            var url = $"search?q={Uri.EscapeDataString(keyword)}&country={m_culture.Name}&language={m_culture.Name}&maxitems={maxResults}";
-            var response = await m_client.Value.QueryMusicServiceAsync<GrooveResponse>(url);
-            return response;
+            var url = $"1/content/music/search?q={Uri.EscapeDataString(keyword)}&country={m_culture.Name}&language={m_culture.Name}&maxitems={maxResults}";
+            return await m_client.Value.QueryMusicServiceAsync<GrooveResponse>(url);
         }
 
         /// <summary>
@@ -87,9 +85,8 @@ namespace GL.Sdk.Groove.Client
         {
             if (maxResults > 25) throw new ArgumentException("maxResults must be greater than 0 and less than 25", "maxResults");
             var aggregatedFilters = ParametersFormatter.Format(filters.Select(x => x.ToString()));
-            var url = $"search?q={Uri.EscapeDataString(keyword)}&country={m_culture.Name}&language={m_culture.Name}&maxitems={maxResults}&filters={aggregatedFilters}";
-            var response = await m_client.Value.QueryMusicServiceAsync<GrooveResponse>(url);
-            return response;
+            var url = $"1/content/music/search?q={Uri.EscapeDataString(keyword)}&country={m_culture.Name}&language={m_culture.Name}&maxitems={maxResults}&filters={aggregatedFilters}";
+            return await m_client.Value.QueryMusicServiceAsync<GrooveResponse>(url);
         }
 
         /// <summary>
@@ -105,9 +102,8 @@ namespace GL.Sdk.Groove.Client
             if (maxResults > 25) throw new ArgumentException("maxResults must be greater than 0 and less than 25", "maxResults");
             var aggregatedFilters = ParametersFormatter.Format(filters.Select(x => x.ToString()));
             var formattedSource = ParametersFormatter.Format(source.Select(x => x.ToString()));
-            var url = $"search?q={Uri.EscapeDataString(keyword)}&country={m_culture.Name}&language={m_culture.Name}&maxitems={maxResults}&filters={aggregatedFilters}&source={formattedSource}";
-            var response = await m_client.Value.QueryMusicServiceAsync<GrooveResponse>(url);
-            return response;
+            var url = $"1/content/music/search?q={Uri.EscapeDataString(keyword)}&country={m_culture.Name}&language={m_culture.Name}&maxitems={maxResults}&filters={aggregatedFilters}&source={formattedSource}";
+            return await m_client.Value.QueryMusicServiceAsync<GrooveResponse>(url);
         }
 
         /// <summary>
@@ -117,9 +113,8 @@ namespace GL.Sdk.Groove.Client
         /// <returns>The list of items found in the catalog</returns>
         public async Task<GrooveResponse> ContinueSearchAsync(string continuationToken)
         {
-            var url = $"search?continuationToken={continuationToken}";
-            var response = await m_client.Value.QueryMusicServiceAsync<GrooveResponse>(url);
-            return response;
+            var url = $"1/content/music/search?continuationToken={continuationToken}";
+            return await m_client.Value.QueryMusicServiceAsync<GrooveResponse>(url);
         }
 
         /// <summary>
@@ -130,9 +125,8 @@ namespace GL.Sdk.Groove.Client
         public async Task<GrooveResponse> LookupAsync(IEnumerable<string> ids)
         {
             var formattedParams = ParametersFormatter.Format(ids);
-            var url = $"{formattedParams}/lookup?locale={m_culture.Name}&country={m_culture.Name}&language={m_culture.Name}";
-            var response = await m_client.Value.QueryCatalogServiceAsync<GrooveResponse>(url);
-            return response;
+            var url = $"1/content/{formattedParams}/lookup?locale={m_culture.Name}&country={m_culture.Name}&language={m_culture.Name}";
+            return await m_client.Value.QueryMusicServiceAsync<GrooveResponse>(url);
         }
 
         /// <summary>
@@ -145,9 +139,8 @@ namespace GL.Sdk.Groove.Client
         {
             var formattedParams = ParametersFormatter.Format(ids);
             var formattedSource = ParametersFormatter.Format(source.Select(x => x.ToString()));
-            var url = $"{formattedParams}/lookup?locale={m_culture.Name}&country={m_culture.Name}&language={m_culture.Name}&source={formattedSource}";
-            var response = await m_client.Value.QueryCatalogServiceAsync<GrooveResponse>(url);
-            return response;
+            var url = $"1/content/{formattedParams}/lookup?locale={m_culture.Name}&country={m_culture.Name}&language={m_culture.Name}&source={formattedSource}";
+            return await m_client.Value.QueryMusicServiceAsync<GrooveResponse>(url);
         }
 
         /// <summary>
@@ -162,9 +155,8 @@ namespace GL.Sdk.Groove.Client
             var formattedParams = ParametersFormatter.Format(ids);
             var formattedSource = ParametersFormatter.Format(source.Select(x => x.ToString()));
             var formattedExtras = ParametersFormatter.Format(extraFields.Select(x => x.ToString()));
-            var url = $"{formattedParams}/lookup?locale={m_culture.Name}&country={m_culture.Name}&language={m_culture.Name}&source={formattedSource}&extras={formattedExtras}";
-            var response = await m_client.Value.QueryCatalogServiceAsync<GrooveResponse>(url);
-            return response;
+            var url = $"1/content/{formattedParams}/lookup?locale={m_culture.Name}&country={m_culture.Name}&language={m_culture.Name}&source={formattedSource}&extras={formattedExtras}";
+            return await m_client.Value.QueryMusicServiceAsync<GrooveResponse>(url);
         }
 
         /// <summary>
@@ -176,9 +168,8 @@ namespace GL.Sdk.Groove.Client
         public async Task<GrooveResponse> ContinueLookupAsync(string continuationToken, IEnumerable<string> ids)
         {
             var formattedParams = ParametersFormatter.Format(ids);
-            var url = $"{formattedParams}/lookup?continuationToken={continuationToken}";
-            var response = await m_client.Value.QueryCatalogServiceAsync<GrooveResponse>(url);
-            return response;
+            var url = $"1/content/{formattedParams}/lookup?continuationToken={continuationToken}";
+            return await m_client.Value.QueryMusicServiceAsync<GrooveResponse>(url);
         }
 
         /// <summary>
@@ -187,9 +178,8 @@ namespace GL.Sdk.Groove.Client
         /// <returns>The list of available genres</returns>
         public async Task<GenresResponse> GetGenresAsync()
         {
-            string url = $"catalog/genres?country={m_culture.Name}&language={m_culture.Name}";
-            var response = await m_client.Value.QueryMusicServiceAsync<GenresResponse>(url);
-            return response;
+            string url = $"1/content/music/catalog/genres?country={m_culture.Name}&language={m_culture.Name}";
+            return await m_client.Value.QueryMusicServiceAsync<GenresResponse>(url);
         }
 
         /// <summary>
@@ -198,20 +188,15 @@ namespace GL.Sdk.Groove.Client
         /// <returns>The list of featured albums</returns>
         public async Task<FeaturedResponse> GetSpotlightAsync()
         {
-            string url = $"spotlight?country={m_culture.Name}&language={m_culture.Name}";
-            var response = await m_client.Value.QueryMusicServiceAsync<FeaturedResponse>(url);
-            return response;
+            string url = $"1/content/music/spotlight?country={m_culture.Name}&language={m_culture.Name}";
+            return await m_client.Value.QueryMusicServiceAsync<FeaturedResponse>(url);
         }
 
         /// <summary>
         /// Fetches the user's profile
         /// </summary>
         /// <returns>The user profile</returns>
-        public async Task<UserProfileResponse> GetUserProfileAsync()
-        {
-            var response = await m_client.Value.QueryMusicServiceAsync<UserProfileResponse>("/1/user/music/profile");
-            return response;
-        }
+        public async Task<UserProfileResponse> GetUserProfileAsync() => await m_client.Value.QueryMusicServiceAsync<UserProfileResponse>("1/user/music/profile");
 
         /// <summary>
         /// Fetches the new releases for the current locale
@@ -219,9 +204,8 @@ namespace GL.Sdk.Groove.Client
         /// <returns>The list of new releases</returns>
         public async Task<FeaturedResponse> GetNewReleasesAsync()
         {
-            var url = $"newreleases?country={m_culture.Name}&language={m_culture.Name}";
-            var response = await m_client.Value.QueryMusicServiceAsync<FeaturedResponse>(url);
-            return response;
+            var url = $"1/content/music/newreleases?country={m_culture.Name}&language={m_culture.Name}";
+            return await m_client.Value.QueryMusicServiceAsync<FeaturedResponse>(url);
         }
 
         /// <summary>
@@ -231,9 +215,8 @@ namespace GL.Sdk.Groove.Client
         /// <returns>The list of new releases</returns>
         public async Task<FeaturedResponse> GetNewReleasesAsync(GenreModel genre)
         {
-            var url = $"newreleases?genre={genre.Name}&country={m_culture.Name}&language={m_culture.Name}";
-            var response = await m_client.Value.QueryMusicServiceAsync<FeaturedResponse>(url);
-            return response;
+            var url = $"1/content/music/newreleases?genre={genre.Name}&country={m_culture.Name}&language={m_culture.Name}";
+            return await m_client.Value.QueryMusicServiceAsync<FeaturedResponse>(url);
         }
 
         /// <summary>
@@ -242,9 +225,8 @@ namespace GL.Sdk.Groove.Client
         /// <returns>The list of available moods</returns>
         public async Task<MoodsResponse> GetAvailableMoodsAsync()
         {
-            var url = $"catalog/moods?&country={m_culture.Name}&language={m_culture.Name}";
-            var response = await m_client.Value.QueryMusicServiceAsync<MoodsResponse>(url);
-            return response;
+            var url = $"1/content/music/catalog/moods?&country={m_culture.Name}&language={m_culture.Name}";
+            return await m_client.Value.QueryMusicServiceAsync<MoodsResponse>(url);
         }
 
         /// <summary>
@@ -253,9 +235,8 @@ namespace GL.Sdk.Groove.Client
         /// <returns></returns>
         public async Task<ActivitiesResponse> GetAvailableActivitiesAsync()
         {
-            var url = $"catalog/activities?&country={m_culture.Name}&language={m_culture.Name}";
-            var response = await m_client.Value.QueryMusicServiceAsync<ActivitiesResponse>(url);
-            return response;
+            var url = $"1/content/music/catalog/activities?&country={m_culture.Name}&language={m_culture.Name}";
+            return await m_client.Value.QueryMusicServiceAsync<ActivitiesResponse>(url);
         }
 
         /// <summary>
@@ -266,9 +247,8 @@ namespace GL.Sdk.Groove.Client
         /// <returns></returns>
         public async Task<TrackPlaybackResponse> GetPreviewStreamAsync(string track, PlaybackType streamType)
         {
-            var url = $"{track}/{streamType}?country={m_culture.Name}&language={m_culture.Name}&clientInstanceId={m_client.Value.ClienteInstanceId}";
-            var response = await m_client.Value.QueryCatalogServiceAsync<TrackPlaybackResponse>(url);
-            return response;
+            var url = $"1/content/{track}/{streamType}?country={m_culture.Name}&language={m_culture.Name}&clientInstanceId={m_client.Value.ClienteInstanceId}";
+            return await m_client.Value.QueryMusicServiceAsync<TrackPlaybackResponse>(url);
         }
 
         /// <summary>
